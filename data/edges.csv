@@ -1,0 +1,24 @@
+Source,Target,Line_Name,Color,Distance_km,Distance_miles
+Aljunied,Paya Lebar,East West Line,#00FF00,1.04,0.65
+Paya Lebar,Eunos,East West Line,#00FF00,1.25,0.78
+Eunos,Kembangan,East West Line,#00FF00,1.09,0.68
+Kembangan,Bedok,East West Line,#00FF00,1.92,1.19
+Tai Seng,MacPherson,Circle Line,#FF6600,1,0.62
+MacPherson,Paya Lebar,Circle Line,#FF6600,1.04,0.65
+Paya Lebar,Dakota,Circle Line,#FF6600,1.03,0.64
+Tai Seng,Bartley,Circle Line,#FF6600,1.23,0.76
+Bartley,Serangoon,Circle Line,#FF6600,1.22,0.76
+Serangoon,Lorong Chuan,Circle Line,#FF6600,0.96,0.6
+Lorong Chuan,Bishan,Circle Line,#FF6600,1.67,1.04
+Mattar,MacPherson,Downtown Line,#0040FF,0.68,0.42
+MacPherson,Ubi,Downtown Line,#0040FF,1.18,0.73
+Ubi,Kaki Bukit,Downtown Line,#0040FF,1.17,0.73
+Kaki Bukit,Bedok North,Downtown Line,#0040FF,1.06,0.66
+Kovan,Serangoon,North East Line,#800080,1.73,1.07
+Serangoon,Woodleigh,North East Line,#800080,1.29,0.8
+Woodleigh,Potong Pasir,North East Line,#800080,0.89,0.55
+Potong Pasir,Boon Keng,North East Line,#800080,1.58,0.98
+Ang Mo Kio,Bishan,North South Line,#FF0000,2.07,1.29
+Bishan,Braddell,North South Line,#FF0000,1.23,0.76
+Braddell,Toa Payoh,North South Line,#FF0000,0.88,0.55
+Toa Payoh,Novena,North South Line,#FF0000,1.42,0.88
