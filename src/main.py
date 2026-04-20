@@ -16,7 +16,7 @@ def build_transport_graph():
 
     # Add nodes and edges to the graph
     for index, row in stations_df.iterrows():
-        code = row.get('Code', row['Station_Name'][:2]) if 'Code' in row else row['Station_Name'][:2]
+        code = row['Code']
         MyGraph.add_node(
             row['Station_Name'], 
             pos=(row['X_pos'], row['Y_pos']), 
@@ -32,7 +32,7 @@ def build_transport_graph():
     # Add edges to the graph
     for index, row in edges_df.iterrows():
         km_distance = row['Distance_km']
-        miles_distance = row['Distance_miles'] if 'Distance_miles' in row else round(km_distance * 0.621371, 2)
+        miles_distance = row['Distance_miles']
         
         MyGraph.add_edge(
             row['Source'], 
@@ -72,8 +72,7 @@ def draw_map(MyGraph, weight_choice):
     # Display edge weights (distances)
     edge_labels = nx.get_edge_attributes(MyGraph, weight_choice)
     # Add unit suffix to edge labels
-    unit = 'km' if weight_choice == 'km' else 'miles'
-    edge_labels_with_unit = {edge: f"{value}{unit}" for edge, value in edge_labels.items()}
+    edge_labels_with_unit = {edge: f"{value}{weight_choice}" for edge, value in edge_labels.items()}
     
     # Draw edge labels with transparent background to avoid covering edges
     edge_label_collection = nx.draw_networkx_edge_labels(
@@ -131,19 +130,18 @@ def draw_map(MyGraph, weight_choice):
     
     # Tight layout with space reserved for title
     plt.tight_layout(rect=[0, 0, 1, 0.96])
-    plt.savefig('Public_Transport_Network_Map_Km.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 def extract_network_data(MyGraph):
-    # Take km distances from edges, defaulting to 0 if 'km' attribute is missing
-    edges_data = [data.get('km', 0) for u, v, data in MyGraph.edges(data=True)]
-    num_edges = len(edges_data)
+    # Take km distances from edges
+    edge_distances_km = [data['km'] for u, v, data in MyGraph.edges(data=True)]
+    num_edges = len(edge_distances_km)
     
-    # Use NumPy to calculate sum and average
-    total_km = round(np.sum(edges_data), 2)
+    # Calculate sum and average
+    total_km = round(np.sum(edge_distances_km), 2)
     total_miles = round(total_km * 0.621371, 2)
     
-    avg_km = round(np.mean(edges_data), 2) if num_edges > 0 else 0
+    avg_km = round(np.mean(edge_distances_km), 2) if num_edges > 0 else 0
     avg_miles = round(avg_km * 0.621371, 2)
     
     # Print results
@@ -158,8 +156,6 @@ def extract_network_data(MyGraph):
     print(f"  {avg_km} km")
     print(f"  {avg_miles} miles")
     print("="*60 + "\n")
-    
-    return total_km, total_miles, avg_km, avg_miles
 
 if __name__ == "__main__":
     my_graph = build_transport_graph()
