@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import TextBox, Button
 import networkx as nx
 
-# TASK 1
 def build_transport_graph():
     MyGraph = nx.Graph()  # Create an empty graph
     
@@ -75,7 +74,6 @@ def match_station_name(MyGraph, user_input):
     else:
         return None, f"Station '{text}' not found."
 
-# TASK 3: Interactive Shortest Path Finder
 def draw_map(MyGraph, weight_choice):
     # Detect screen size and adapt figure layout
     fig, ax = plt.subplots(figsize=(16, 10), facecolor='white')
@@ -319,7 +317,6 @@ def draw_map(MyGraph, weight_choice):
 
     plt.show()
 
-# TASK 2
 def extract_network_data(MyGraph):
     # Take km distances from edges
     edge_distances_km = [data['km'] for u, v, data in MyGraph.edges(data=True)]
